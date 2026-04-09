@@ -1,0 +1,20 @@
+{
+  "name": "cermati-framework",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright E2E test automation framework for cermati.com",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen https://www.cermati.com"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.12.0",
+    "dotenv": "^17.4.1",
+    "typescript": "^5.4.0"
+  }
+}
