@@ -10,11 +10,11 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@page-objects/*": ["automation-test/page-objects/*"],
-      "@fixtures/*": ["automation-test/fixtures/*"],
-      "@types-local/*": ["automation-test/types/*"]
+      "@page-objects/*": ["page-objects/*"],
+      "@types-local/*": ["types/*"],
+      "@utils/*": ["utils/*"]
     }
   },
-  "include": ["automation-test/**/*.ts", "playwright.config.ts"],
+  "include": ["page-objects/**/*.ts", "tests/**/*.ts", "utils/**/*.ts", "playwright.config.ts"],
   "exclude": ["node_modules", "dist"]
 }

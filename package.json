@@ -1,15 +1,15 @@
 {
-  "name": "cermati-framework",
+  "name": "sleekflow-framework",
   "version": "1.0.0",
   "private": true,
-  "description": "Playwright E2E test automation framework for cermati.com",
+  "description": "Playwright E2E test automation framework for sleekflow.io",
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report",
-    "codegen": "playwright codegen https://www.cermati.com"
+    "codegen": "playwright codegen https://sleekflow.io"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.0",
