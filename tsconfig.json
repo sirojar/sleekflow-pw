@@ -15,6 +15,6 @@
       "@utils/*": ["utils/*"]
     }
   },
-  "include": ["page-objects/**/*.ts", "tests/**/*.ts", "utils/**/*.ts", "playwright.config.ts"],
+  "include": ["page-objects/**/*.ts", "fixtures/**/*.ts", "tests/**/*.ts", "utils/**/*.ts", "playwright.config.ts"],
   "exclude": ["node_modules", "dist"]
 }

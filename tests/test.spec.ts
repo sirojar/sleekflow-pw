@@ -1,21 +1,11 @@
-import { expect, test } from "@playwright/test";
-import { HomePage } from "../page-objects/HomePage";
-import { LoginPage } from "../page-objects/LoginPage";
+import { expect, test } from "../fixtures/base";
 import { SignUpPage } from "../page-objects/SignUpPage";
 import { DashboardPage } from "../page-objects/DashboardPage";
 import { generateMailsacEmail, getEnv } from "../utils/env";
 import { getLatestEmailLink } from "../utils/apiCall";
 
-test("User sign up on sleekflow.io", async ({ page }) => {
-  const homePage = new HomePage(page);
+test("User sign up on sleekflow.io", async ({ loginPage }) => {
   const signUpEmail = generateMailsacEmail();
-  await test.step("Open sleekflow.io", () => homePage.goto());
-
-  let loginPage: LoginPage;
-  await test.step("Click login button", async () => {
-    loginPage = await homePage.clickLoginButton();
-    await expect(loginPage.welcomeBackHeading).toBeVisible();
-  });
 
   let signUpPage: SignUpPage;
   await test.step("Click sign up button", async () => {
@@ -67,16 +57,7 @@ test("User sign up on sleekflow.io", async ({ page }) => {
   });
 });
 
-test("User login with valid credentials", async ({ page }) => {
-  const homePage = new HomePage(page);
-  await test.step("Open sleekflow.io", () => homePage.goto());
-
-  let loginPage: LoginPage;
-  await test.step("Click login button", async () => {
-    loginPage = await homePage.clickLoginButton();
-    await expect(loginPage.welcomeBackHeading).toBeVisible();
-  });
-
+test("User login with valid credentials", async ({ loginPage }) => {
   await test.step("Input login email", async () => {
     await loginPage.inputLoginEmail(getEnv("LOGIN_EMAIL"));
   });
@@ -95,16 +76,7 @@ test("User login with valid credentials", async ({ page }) => {
   });
 });
 
-test("user login with wrong password", async ({ page }) => {
-  const homePage = new HomePage(page);
-  await test.step("Open sleekflow.io", () => homePage.goto());
-
-  let loginPage: LoginPage;
-  await test.step("Click login button", async () => {
-    loginPage = await homePage.clickLoginButton();
-    await expect(loginPage.welcomeBackHeading).toBeVisible();
-  });
-
+test("user login with wrong password", async ({ loginPage }) => {
   await test.step("Input login email", async () => {
     await loginPage.inputLoginEmail(getEnv("LOGIN_EMAIL"));
   });
