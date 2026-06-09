@@ -1,5 +1,5 @@
 import { expect, test } from "../fixtures/base";
-import { generateMailsacEmail, getEnv } from "../utils/env";
+import { generateMailsacEmail, getEnv } from "../utils/helpers";
 import { getLatestEmailLink } from "../utils/apiCall";
 
 test("User sign up on sleekflow.io", async ({ loginPage, signUpPage, dashboardPage }) => {

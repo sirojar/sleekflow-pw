@@ -22,7 +22,7 @@ Playwright end-to-end test automation framework for [sleekflow.io](https://sleek
 ├── tests/
 │   └── test.spec.ts         # Sign-up + login (valid/invalid) test cases
 ├── utils/
-│   ├── env.ts               # getEnv() guards + generateMailsacEmail() (unique test emails)
+│   ├── helpers.ts           # getEnv() guards + generateMailsacEmail() (unique test emails)
 │   └── apiCall.ts           # generic apiCall() client + getLatestEmailLink() (polls Mailsac)
 ├── playwright.config.ts     # Runner config (testDir, baseURL, timeouts, reporters)
 └── tsconfig.json            # Strict TS + path aliases (@page-objects, @utils, @types-local)

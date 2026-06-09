@@ -1,5 +1,5 @@
 import { request } from '@playwright/test';
-import { getEnv } from './env';
+import { getEnv } from './helpers';
 
 const MAILSAC_BASE_URL = 'https://mailsac.com';
 
