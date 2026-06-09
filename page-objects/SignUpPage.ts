@@ -1,6 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
-import { DashboardPage } from "./DashboardPage";
 
 export class SignUpPage extends BasePage {
   private readonly emailTextBox: Locator;
@@ -81,10 +80,12 @@ export class SignUpPage extends BasePage {
     await this.nextButton.click();
   }
 
-  async inputPersonalInformation(name: string, phoneNumber: string): Promise<DashboardPage> {
+  async inputPersonalInformation(name: string, phoneNumber: string): Promise<void> {
     await this.personalNameTextBox.fill(name);
     await this.phoneTextBox.fill(phoneNumber);
+  }
+
+  async clickGetStarted(): Promise<void> {
     await this.getStartedButton.click();
-    return new DashboardPage(this.page);
   }
 }

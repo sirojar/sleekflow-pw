@@ -15,6 +15,16 @@ export abstract class BasePage {
     this.page = page;
   }
 
+  /**
+   * The Playwright `Page` this object is bound to. Exposed so a test can build
+   * another page object for the *same* tab (e.g. the popup) without the
+   * navigating method having to return it. Use sparingly — prefer driving
+   * screens through page-object methods over raw `page` access.
+   */
+  get currentPage(): Page {
+    return this.page;
+  }
+
   // --- Custom actions (shared across all page objects) ---
 
   /** Navigate to a path relative to the configured baseURL (defaults to home). */

@@ -1,15 +1,12 @@
 import { expect, test } from "../fixtures/base";
-import { SignUpPage } from "../page-objects/SignUpPage";
-import { DashboardPage } from "../page-objects/DashboardPage";
 import { generateMailsacEmail, getEnv } from "../utils/env";
 import { getLatestEmailLink } from "../utils/apiCall";
 
-test("User sign up on sleekflow.io", async ({ loginPage }) => {
+test("User sign up on sleekflow.io", async ({ loginPage, signUpPage, dashboardPage }) => {
   const signUpEmail = generateMailsacEmail();
 
-  let signUpPage: SignUpPage;
   await test.step("Click sign up button", async () => {
-    signUpPage = await loginPage.clickSignUpButton();
+    await loginPage.clickSignUpButton();
   });
 
   await test.step("Input Email", async () => {
@@ -43,13 +40,12 @@ test("User sign up on sleekflow.io", async ({ loginPage }) => {
     await signUpPage.inputCompanyDetails();
   });
 
-  let dashboardPage: DashboardPage;
   await test.step("Input personal information", async () => {
-    dashboardPage = await signUpPage.inputPersonalInformation(getEnv("NAME"), getEnv("PHONE"));
+    await signUpPage.inputPersonalInformation(getEnv("NAME"), getEnv("PHONE"));
   });
 
   await test.step("Click Get started", async () => {
-    await dashboardPage.clickGetStarted();
+    await signUpPage.clickGetStarted();
   });
 
   await test.step("Assert Sign Up Successfully", async () => {
@@ -57,7 +53,7 @@ test("User sign up on sleekflow.io", async ({ loginPage }) => {
   });
 });
 
-test("User login with valid credentials", async ({ loginPage }) => {
+test("User login with valid credentials", async ({ loginPage, dashboardPage }) => {
   await test.step("Input login email", async () => {
     await loginPage.inputLoginEmail(getEnv("LOGIN_EMAIL"));
   });
@@ -66,9 +62,8 @@ test("User login with valid credentials", async ({ loginPage }) => {
     await loginPage.inputLoginPassword(getEnv("LOGIN_PASSWORD"));
   });
 
-  let dashboardPage: DashboardPage;
   await test.step("Click sign in button", async () => {
-    dashboardPage = await loginPage.clickSignInButton();
+    await loginPage.clickSignInButton();
   });
 
   await test.step("Assert login successful", async () => {
