@@ -1,6 +1,5 @@
 import { Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { LoginPage } from './LoginPage';
 
 export class HomePage extends BasePage {
   private readonly loginButton: Locator;
@@ -10,12 +9,16 @@ export class HomePage extends BasePage {
     this.loginButton = page.getByRole('link', { name: 'Log In' })
   }
 
-  async clickLoginButton(): Promise<LoginPage> {
-    const [newPage] = await Promise.all([
+  /**
+   * Clicks "Log In", which opens the auth flow in a new browser tab,
+   * and returns that popup Page.
+   */
+  async openLoginPopup(): Promise<Page> {
+    const [popup] = await Promise.all([
       this.page.waitForEvent('popup'),
       this.loginButton.click(),
     ]);
-    await newPage.waitForLoadState();
-    return new LoginPage(newPage);
+    await popup.waitForLoadState();
+    return popup;
   }
 }
